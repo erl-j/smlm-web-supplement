@@ -27,8 +27,8 @@ const sections = [
   {
     name: "Duration control",
     experiments: [
-      { "description": "Generation with note duration constrained to be less than 8 steps.", "id": "duration_constraint,_<8" },
-      { "description": "Generation with note duration constrained to be more than 8 steps.", "id": "duration_constraint,_>8" },
+      { "description": "Generation with note duration constrained to be less than 8 steps.", "id": "duration_constraint,_lt8" },
+      { "description": "Generation with note duration constrained to be more than 8 steps.", "id": "duration_constraint,_gt8" },
     ],
   },
   {
@@ -36,7 +36,7 @@ const sections = [
     experiments: [
       { "description": "Generation with onset time constrained to every 4 steps", "id": "onset_constraint,_4" },
       { "description": "Generation with onset time constrained to every 8 steps", "id": "onset_constraint,_8" },
-      { "description": "Generation with onset time constrained to every 6 steps", "id": "onset_constraint,_16" },
+      { "description": "Generation with onset time constrained to every 16 steps", "id": "onset_constraint,_16" },
     ],
   },
   {
@@ -70,7 +70,13 @@ function App() {
       }}
         onClick={
           () => {
-            setSelectedExample(experiment_id_nr);
+            if (selectedExample === experiment_id_nr) {
+              setSelectedExample(null);
+              return;
+            }
+            else{
+              setSelectedExample(experiment_id_nr);
+            }
           }
         }
       >
