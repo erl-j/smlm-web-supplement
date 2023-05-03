@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/smlm-web-supplement/static/css/main.31d6cfe0.css",
+    "main.js": "/smlm-web-supplement/static/js/main.ec55ebf9.js",
+    "static/js/787.0cf77528.chunk.js": "/smlm-web-supplement/static/js/787.0cf77528.chunk.js",
+    "index.html": "/smlm-web-supplement/index.html",
+    "main.ec55ebf9.js.map": "/smlm-web-supplement/static/js/main.ec55ebf9.js.map",
+    "787.0cf77528.chunk.js.map": "/smlm-web-supplement/static/js/787.0cf77528.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.ec55ebf9.js"
+  ]
+}
