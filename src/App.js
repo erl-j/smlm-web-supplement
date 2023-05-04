@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 const sections = [
   {
-
     name: "Unconditional generation",
     experiments: [
       { "description": "These samples were generated without any constraints.", "id": "unconstrained" }
@@ -56,34 +55,33 @@ const sections = [
   },
 ]
 
-
-
 function App() {
 
   const [selectedExample, setSelectedExample] = useState(null);
   const audioRef = React.useRef(null);
 
-    // on click this component stops all audio and plays an audio file. 
-    const img = (experiment_id_nr) => (
-      <div style={{
-        border: selectedExample === experiment_id_nr ? "solid 5px aquamarine" : "solid 5px transparent",
-      }}
-        onClick={
-          () => {
-            if (selectedExample === experiment_id_nr) {
-              setSelectedExample(null);
-              return;
-            }
-            else{
-              setSelectedExample(experiment_id_nr);
-            }
+  // on click this component stops all audio and plays an audio file. 
+  const img = (experiment_id_nr) => (
+    <div style={{
+      border: selectedExample === experiment_id_nr ? "solid 5px aquamarine" : "solid 5px transparent",
+      animation:  selectedExample === experiment_id_nr ? "pulse 1.5s infinite" : ""
+    }}
+      onClick={
+        () => {
+          if (selectedExample === experiment_id_nr) {
+            setSelectedExample(null);
+            return;
+          }
+          else {
+            setSelectedExample(experiment_id_nr);
           }
         }
-      >
-        <img style={{ maxWidth: "100%", height: "auto" }} src={`./supplement/roll/${experiment_id_nr}.png`} />
-      </div>
-    )
-  
+      }
+    >
+      <img style={{ maxWidth: "100%", height: "auto" }} src={`./supplement/roll/${experiment_id_nr}.png`} />
+    </div>
+  )
+
 
   React.useEffect(() => {
     // stop all audio when a new example is selected
@@ -98,35 +96,32 @@ function App() {
       );
       audioRef.current.play();
     }
-
-    console.log("selectedExample", selectedExample);
-
   }, [selectedExample])
 
   return (
-    <div style={{margin:4}}>
+    <div style={{ margin: 4 , height:"100%", maxWidth:"69vh", margin:"auto"}}>
       <h1>Softly Masked Language Model - Web supplement</h1>
-      <p>Click a piano roll to listen. The composition is played twice.</p>
+      <p>Click a piano roll to listen. The composition is played twice. Green parts areas are generated</p>
       {sections.map((section, idx) => {
         let sectionName = section.name;
         let experiments = section.experiments;
-        return  (
-        <div key={idx} style={{width: "70%", margin: "auto"}}>
-          <h1>{sectionName}</h1>
-          {experiments.map((experiment, experiment_idx) =>
-            <div key={experiment_idx} style={{ display: "flex", flexDirection: "column", "margin-bottom": 64  }}>
-              <p>{experiment.description}</p>
-              <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
-                {img(experiment.id+"_"+0)}
-                {img(experiment.id+"_"+1)}
+        return (
+          <div key={idx}>
+            <h2>{sectionName}</h2>
+            {experiments.map((experiment, experiment_idx) =>
+              <div key={experiment_idx} style={{ display: "flex", flexDirection: "column", "margin-bottom": 64 }}>
+                <p>{experiment.description}</p>
+                <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
+                  {img(experiment.id + "_" + 0)}
+                  {img(experiment.id + "_" + 1)}
+                </div>
+                <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
+                  {img(experiment.id + "_" + 2)}
+                  {img(experiment.id + "_" + 3)}
+                </div>
               </div>
-              <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
-                {img(experiment.id+"_"+2)}
-                {img(experiment.id+"_"+3)}
-              </div>
-            </div>
-          )}
-        </div>)
+            )}
+          </div>)
       })
       }
     </div>
