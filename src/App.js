@@ -10,8 +10,8 @@ const sections = [
   {
     name: "Imputation",
     experiments: [
-      { "description": "Imputation. Generated with temperature = 0.75 and p = 0.9.", "id": "imputation,_time" },
-      { "description": "Imputation. Generated with temperature = 0.75 and p = 0.9.", "id": "imputation,_pitch_and_time" },
+      { "description": "Imputation. Generated with temperature=0.75 and p=0.9.", "id": "imputation,_time" },
+      { "description": "Imputation. Generated with temperature=0.75 and p=0.9.", "id": "imputation,_pitch_and_time" },
       { "description": "Imputation of high pitches conditioned on low pitches", "id": "imputation,_pitch_upper" },
       { "description": "Imputation of low pitches conditioned on high pitches.", "id": "imputation,_pitch_lower" },
     ],
@@ -99,9 +99,9 @@ function App() {
   }, [selectedExample])
 
   return (
-    <div style={{ margin: 4 , height:"100%", maxWidth:"69vh", margin:"auto"}}>
-      <h1>Softly Masked Language Model - Web supplement</h1>
-      <p>Click a piano roll to listen. The composition is played twice. Green parts areas are generated</p>
+    <div style={{ margin: 4 , height:"100%", maxWidth:"89vh", margin:"auto"}}>
+      <h1>Exploring Softly Masked Language Modelling for Controllable Symbolic Music Generation - Web supplement</h1>
+      <p>Click a piano roll to listen. The composition is played twice. Green areas are generated</p>
       {sections.map((section, idx) => {
         let sectionName = section.name;
         let experiments = section.experiments;
